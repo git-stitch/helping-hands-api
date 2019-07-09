@@ -7,4 +7,5 @@ class Organization < ApplicationRecord
   has_many :attendees, through: :events
   has_many :users, through: :attendees
   has_many :organization_members
+  has_many :donations
 end

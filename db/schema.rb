@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_28_140413) do
+ActiveRecord::Schema.define(version: 2019_07_08_200446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,24 @@ ActiveRecord::Schema.define(version: 2019_06_28_140413) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_attendees_on_event_id"
     t.index ["user_id"], name: "index_attendees_on_user_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.integer "pay_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "organization_id"
+    t.string "charge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_donations_on_organization_id"
+    t.index ["user_id"], name: "index_donations_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -92,6 +110,7 @@ ActiveRecord::Schema.define(version: 2019_06_28_140413) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "username"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
@@ -100,6 +119,9 @@ ActiveRecord::Schema.define(version: 2019_06_28_140413) do
 
   add_foreign_key "attendees", "events"
   add_foreign_key "attendees", "users"
+  add_foreign_key "customers", "users"
+  add_foreign_key "donations", "organizations"
+  add_foreign_key "donations", "users"
   add_foreign_key "events", "organizations"
   add_foreign_key "organization_contacts", "organizations"
   add_foreign_key "organization_images", "organizations"

@@ -49,3 +49,7 @@ gem "active_model_serializers", "~> 0.10.9"
 gem "faker", "~> 1.9"
 
 gem "jwt", "~> 2.2"
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+gem "httparty", "~> 0.17.0"

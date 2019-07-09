@@ -98,7 +98,7 @@ social2 = OrganizationSocial.create(organization_id:org.id,social_media_name:"In
       day = day_arr[rand(0..day_arr.length-1)]
       month_arr = Array(1..12)
       month = month_arr[rand(0..month_arr.length-1)]
-      new_benfit = Faker::Cannabis.unique.health_benefit
+      new_benefit = Faker::Cannabis.unique.health_benefit
 
       name = "#{g_name}'s #{cannabis} drive."
       description = "#{g_name} is hosting a #{cannabis} drive. All donations will go toward research for #{new_benefit} research."
@@ -114,7 +114,7 @@ end
 ########################
 #Users
 ########################
-stein = User.create(email:"stein@gmail.com", password:"jarjarbinx123")
+stein = User.create(email:"bruh@bruh", password:"bruh", username:"bruh")
 
 ########################
 #Initial Supporter

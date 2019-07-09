@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: one
+  organization_id: one
+  charge_id: 1
+
+two:
+  user_id: two
+  organization_id: two
+  charge_id: 1

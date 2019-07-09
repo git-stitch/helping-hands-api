@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :organization_members, only: [:index,:create,:update,:destroy]
       post "/login", to: "auth#login"
       post "/org_login", to: "auth#org_login"
+      post "/donate", to: "users#donate"
 
       get "/auto_login", to: "auth#auto_login"
       get "/org_auto_login", to: "auth#org_auto_login"
