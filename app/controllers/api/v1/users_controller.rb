@@ -24,11 +24,13 @@ class Api::V1::UsersController < ApplicationController
   def update
     @user = find_user
 
-    @user.update(user_params)
-    if @user.save
-      render json: @user, status: :accepted
-    else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessible_entity
+    if session_user
+      @user.update(user_params)
+      if @user.save
+        render json: @user, status: :accepted
+      else
+        render json: { errors: @user.errors.full_messages }, status: :unprocessible_entity
+      end
     end
   end
 
@@ -55,7 +57,6 @@ class Api::V1::UsersController < ApplicationController
     end
 
     Supporter.create(user_id:@user.id, organization_id:@organization.id)
-    byebug
     render json: {receipt: response.receipt_url}
   end
  
@@ -66,6 +67,6 @@ class Api::V1::UsersController < ApplicationController
   end
  
   def find_user
-    @user = User.find([:id])
+    @user = User.find(params[:id])
   end
 end

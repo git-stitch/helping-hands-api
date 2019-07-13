@@ -1,5 +1,5 @@
 class StripePayment
-  Stripe.api_key = ''
+  Stripe.api_key = 
 
   def make_reocurring_payment(info, customer)
     charge = Stripe::Charge.create({
@@ -61,10 +61,6 @@ class StripePayment
 
   def delete_customer(user)
     Stripe::Customer.delete(user.id)
-  end
-
-  def create_session
-
   end
 
 end
