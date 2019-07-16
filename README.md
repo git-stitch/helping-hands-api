@@ -47,14 +47,14 @@ rails s
 # RESTful Routes
 Here are some routes and example responses for using this api. All test data created using Faker Gem.
 
-###Get All Organizations
+### Get All Organizations
 ```
 fetch(http://localhost:3000/api/v1/organizations)
 .then(res => res.json())
 .then(payload => payload)
 ```
 
-###Sample Response
+### Sample Response
 ```
 
 [
@@ -216,14 +216,14 @@ fetch(http://localhost:3000/api/v1/organizations)
 ]
 ```
 
-###Organization Show Route
+### Organization Show Route
 ```
 fetch(http://localhost:3000/api/v1/organizations/{:id})
 .then(res => res.json())
 .then(payload => payload)
 ```
 
-###Sample Response
+### Sample Response
 ```
 {
   "id": 3,
@@ -382,7 +382,7 @@ fetch(http://localhost:3000/api/v1/organizations/{:id})
 }
 ```
 
-###Create an Organization
+### Create an Organization
 ```
 fetch(http://localhost:3000/api/v1/organizations, {
   method:"POST",
@@ -396,7 +396,7 @@ fetch(http://localhost:3000/api/v1/organizations, {
 .then(payload => payload)
 ```
 
-###Sample Response
+### Sample Response
 ```
 {
     "id": 54,
@@ -415,7 +415,7 @@ fetch(http://localhost:3000/api/v1/organizations, {
 }
 ```
 
-###Update an Organization
+### Update an Organization
 ```
 fetch(http://localhost:3000/api/v1/organizations, {
   method:"POST",
@@ -429,7 +429,7 @@ fetch(http://localhost:3000/api/v1/organizations, {
 .then(payload => payload)
 ```
 
-###Sample Response
+### Sample Response
 ```
 {
     "id": 54,
@@ -448,7 +448,7 @@ fetch(http://localhost:3000/api/v1/organizations, {
 }
 ```
 
-###Delete an Organizations
+### Delete an Organizations
 ```
 fetch(http://localhost:3000/api/v1/organizations/{:id}, {
   method:"DELETE",
@@ -462,7 +462,7 @@ fetch(http://localhost:3000/api/v1/organizations/{:id}, {
 .then(payload => payload)
 ```
 
-###Sample Response
+### Sample Response
 ```
 {
     "success": "You successefully removed your organization."
