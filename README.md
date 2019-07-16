@@ -1,13 +1,62 @@
+# Helping Hands RESTful API
 
-Get All Organizations
--------------------------------
+The Helping Hands API is the back end for the Helping Hands Client. This RESTful API is meant to give routing for the Non-Profit Donation Marketplace. It's complete with the Stripe API, user authorization, creation and non-profit authorization and creation. 
+
+* [Helping Hands Client](https://github.com/VonStein7/helping-hands-client) - The Non-Profit Donation Marketplace Client
+
+## Getting Started
+
+You will need Ruby installed and rails. The current build runs Ruby 2.6.1p33 and Rails 5.2.3. Bundle install or sudo bundle install to load gem file. 
+
+### Installing
+
+```
+bundle install
+```
+
+or 
+
+```
+sudo bundle install
+```
+
+### Getting Started
+
+To get started with running the server. This application assumes you have Postgres installed locally on your machine. If you don't you can visit  [Postgres](https://postgresapp.com/downloads.html) for the installation documentation. Then start the server and we can create the database. 
+
+Create the database and Migrate Tables
+
+```
+rails db:create && rails db:migrate
+```
+
+The seed the database or create your own seeds in the seed file. 
+
+```
+rails db:seed
+```
+
+Run the server
+
+```
+rails s
+```
+
+![Rails](https://i.ibb.co/2ybrtLK/Screen-Shot-2019-07-16-at-12-53-09-PM.png "Rails Started")
+
+# RESTful Routes
+Here are some routes and example responses for using this api. All test data created using Faker Gem.
+
+###Get All Organizations
+```
 fetch(http://localhost:3000/api/v1/organizations)
 .then(res => res.json())
 .then(payload => payload)
+```
 
+###Sample Response
+```
 
-Sample Response
--------------------------------
 [
   {
   "id": 3,
@@ -165,16 +214,17 @@ Sample Response
   ]
   },
 ]
+```
 
-Get A Organization
--------------------------------
+###Organization Show Route
+```
 fetch(http://localhost:3000/api/v1/organizations/{:id})
 .then(res => res.json())
 .then(payload => payload)
+```
 
-
-Sample Response
--------------------------------
+###Sample Response
+```
 {
   "id": 3,
   "name": "Abderus's Cb Ga For Anti Septic Problems Organization'",
@@ -330,9 +380,10 @@ Sample Response
   }
   ]
 }
+```
 
-Create an Organization
--------------------------------
+###Create an Organization
+```
 fetch(http://localhost:3000/api/v1/organizations, {
   method:"POST",
   headers:{
@@ -343,10 +394,10 @@ fetch(http://localhost:3000/api/v1/organizations, {
 })
 .then(res => res.json())
 .then(payload => payload)
+```
 
-
-Sample Response
--------------------------------
+###Sample Response
+```
 {
     "id": 54,
     "name": "test",
@@ -362,9 +413,10 @@ Sample Response
     "supporters": [],
     "events": []
 }
+```
 
-Update an Organization
--------------------------------
+###Update an Organization
+```
 fetch(http://localhost:3000/api/v1/organizations, {
   method:"POST",
   headers:{
@@ -375,9 +427,10 @@ fetch(http://localhost:3000/api/v1/organizations, {
 })
 .then(res => res.json())
 .then(payload => payload)
+```
 
-Sample Response
--------------------------------
+###Sample Response
+```
 {
     "id": 54,
     "name": "updatedtest",
@@ -393,9 +446,10 @@ Sample Response
     "supporters": [],
     "events": []
 }
+```
 
-Delete an Organizations
--------------------------------
+###Delete an Organizations
+```
 fetch(http://localhost:3000/api/v1/organizations/{:id}, {
   method:"DELETE",
   headers:{
@@ -406,12 +460,42 @@ fetch(http://localhost:3000/api/v1/organizations/{:id}, {
 })
 .then(res => res.json())
 .then(payload => payload)
+```
 
-Sample Response
--------------------------------
+###Sample Response
+```
 {
     "success": "You successefully removed your organization."
 }
+```
 
-User Routes
--------------------------------
+##User Routes
+
+
+## Built With
+
+* [Ruby on Rails](https://rubyonrails.org/) - Backend Server
+* [Postgres](https://postgresapp.com/) - Database management
+* [Stripe](https://stripe.com/) - Payment Gateway
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Author
+
+* **Brenden Williams** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Big Ups to Flatiron School and my Cohort for supporting me through this project.
+
+
+
+
+
+
