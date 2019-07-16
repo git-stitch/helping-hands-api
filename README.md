@@ -4,7 +4,7 @@ The Helping Hands API is the back end for the Helping Hands Client. This RESTful
 
 * [Helping Hands Client](https://github.com/VonStein7/helping-hands-client) - The Non-Profit Donation Marketplace Client
 
-## Getting Started
+## Initial Setup
 
 You will need Ruby installed and rails. The current build runs Ruby 2.6.1p33 and Rails 5.2.3. Bundle install or sudo bundle install to load gem file. 
 
