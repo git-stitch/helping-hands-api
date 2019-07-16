@@ -469,8 +469,166 @@ fetch(http://localhost:3000/api/v1/organizations/{:id}, {
 }
 ```
 
-##User Routes
+# User Routes
+The user route has full crud and validations. There is also routes for the user to donate. Full crud for Stripe customer coming in future versions. Validations are turned off for testing. To add validations add the Authorization headers function before each route.
 
+```
+def get_auth_headers
+  request.headers["Authorization"]
+end
+```
+and 
+```
+def session_user
+  User.find_by(id: decode_token)
+end
+```
+
+### Create User
+```
+fetch("http://localhost:3000/api/v1/users",{
+     method:"POST",
+     headers: {
+      "Content-Type": "application/json",
+      "Accepts": "application/json"
+    },
+    body:JSON.stringify({
+      user:{
+        email:user.email,
+        password:user.password
+      }
+    })
+  })
+  .then(res => res.json())
+  .then(data => data)
+```
+
+### Sample Response
+```
+{
+    "user": {
+        "id": 14,
+        "email": "test@test.com",
+        "events": [],
+        "organizations": [],
+        "donations": []
+    },
+    "token": token_response
+}
+```
+
+### Login User or Get User
+```
+fetch("http://localhost:3000/api/v1/login", {
+      method:"POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      },
+      body: JSON.stringify({
+        user:{
+          email:loginInformation.email,
+          password:loginInformation.password
+        }
+      })
+    })
+    .then(res => res.json())
+    .then(data => data)
+```
+
+### Sample Response
+```
+{
+    "user": {
+        "id": 14,
+        "email": "test@test.com",
+        "events": [],
+        "organizations": [],
+        "donations": []
+    },
+    "token": token_response
+}
+```
+
+### Update User
+```
+fetch(`http://localhost:3000/api/v1/users/${userId}`,{
+      method:"PATCH",
+      headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json",
+        "Authorization":token
+      },
+      body:JSON.stringify({
+        id:userId,
+        user:user //user object
+      })
+    })
+    .then(res => res.json())
+    .then(data => data)
+```
+
+### Sample Response 
+```
+{
+    "id": 15,
+    "email": "test@email.com",
+    "events": [],
+    "organizations": [],
+    "donations": []
+}
+```
+
+### Delete User Account
+```
+fetch(`http://localhost:3000/api/v1/users/${userId}`,{
+      method:"DELETE",
+      headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json",
+        "Authorization":token
+      }
+    })
+    .then(res => res.json())
+    .then(data => data)
+```
+
+### Sample Response
+```
+{
+    "success": "You successefully destroyed your account."
+}
+```
+
+### Make a Donation
+```
+fetch("http://localhost:3000/api/v1/donate", {
+      method:"POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json",
+        "Authorization":token
+      },
+      body:JSON.stringify({
+        user:{
+          id:user_id,
+          organization_id: organization_id,
+          token_id: info.token.token.id,
+          amount: info.amount,
+          organization_name: info.organization_name
+        }
+      })
+    })
+    .then(res => res.json())
+    .then(data => data)
+```
+
+### Sample Response
+```
+{
+  receipt: "https://pay.stripe.com/receipts/acct_1EstdwEEdCWpt…tU0FTAlQCpT7/rcpt_FRofGhS4Nfde96BtDWgKaG8VHdVFGo0"
+}
+```
 
 ## Built With
 
@@ -480,11 +638,11 @@ fetch(http://localhost:3000/api/v1/organizations/{:id}, {
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Author
 
-* **Brenden Williams** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Brenden Williams** - *Initial work* - [VonStein](https://github.com/VonStein7)
 
 ## License
 

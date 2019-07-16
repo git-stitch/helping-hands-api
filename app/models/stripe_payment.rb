@@ -1,5 +1,5 @@
 class StripePayment
-  Stripe.api_key = ''
+  Stripe.api_key = 'sk_test_Tqee7DevILo3DxyzddpYnR9m00Csxc0iog'
 
   def make_reocurring_payment(info, customer)
     charge = Stripe::Charge.create({
