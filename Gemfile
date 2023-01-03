@@ -52,4 +52,4 @@ gem "jwt", "~> 2.2"
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
-gem "httparty", "~> 0.17.0"
+gem "httparty", "~> 0.21.0"
